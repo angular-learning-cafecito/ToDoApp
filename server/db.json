@@ -1,0 +1,79 @@
+{
+  "tasks": [
+    {
+      "id": 1,
+      "content": "Some random idea",
+      "status": "IDEAS"
+    },
+    {
+      "id": 2,
+      "content": "This is another random idea",
+      "status": "TODO"
+    },
+    {
+      "id": 3,
+      "content": "Build an awesome application",
+      "status": "RESEARCH"
+    },
+    {
+      "id": 4,
+      "content": "Lorem ipsum",
+      "status": "DONE"
+    },
+    {
+      "id": 5,
+      "content": "foo",
+      "status": "TODO"
+    },
+    {
+      "id": 6,
+      "content": "This was in the 'Research' column",
+      "status": "IDEAS"
+    },
+    {
+      "id": 7,
+      "content": "Get to work",
+      "status": "DONE"
+    },
+    {
+      "id": 8,
+      "content": "Pick up groceries",
+      "status": "RESEARCH"
+    },
+    {
+      "id": 9,
+      "content": "Go home",
+      "status": "RESEARCH"
+    },
+    {
+      "id": 10,
+      "content": "Fall asleep",
+      "status": "DONE"
+    },
+    {
+      "id": 11,
+      "content": "Get up",
+      "status": "RESEARCH"
+    },
+    {
+      "id": 12,
+      "content": "Brush teeth",
+      "status": "IDEAS"
+    },
+    {
+      "id": 13,
+      "content": "Take a shower",
+      "status": "TODO"
+    },
+    {
+      "id": 14,
+      "content": "Check e-mail",
+      "status": "TODO"
+    },
+    {
+      "id": 15,
+      "content": "Walk dog",
+      "status": "DONE"
+    }
+  ]
+}

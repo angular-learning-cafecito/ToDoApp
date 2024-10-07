@@ -1,0 +1,70 @@
+<div class="todo-wrapper">
+  <div class="container">
+    <h2>Ideas</h2>
+    <div
+      cdkDropList
+      #ideasList="cdkDropList"
+      [cdkDropListData]="ideas"
+      [cdkDropListConnectedTo]="[researchList, todoList, doneList]"
+      [id]="'ideasList'"
+      class="drop-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="container-box" *ngFor="let task of ideas " cdkDrag>
+        {{task.content}}
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Research</h2>
+    <div
+      cdkDropList
+      #researchList="cdkDropList"
+      [cdkDropListData]="research"
+      [cdkDropListConnectedTo]="[ideasList,todoList,doneList]"
+      [id]="'researchList'"
+      class="drop-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="container-box" *ngFor="let task of research "  cdkDrag>
+        {{task.content}}
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>To Do</h2>
+    <div
+      cdkDropList
+      #todoList="cdkDropList"
+      [cdkDropListData]="todo"
+      [cdkDropListConnectedTo]="[ideasList,researchList,doneList]"
+      [id]="'todoList'"
+      class="drop-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="container-box" *ngFor="let task of todo "  cdkDrag>
+        {{task.content}}
+      </div>
+    </div>
+  </div>
+
+  <div class="container">
+    <h2>Done</h2>
+    <div
+      cdkDropList
+      #doneList="cdkDropList"
+      [cdkDropListData]="done"
+      [cdkDropListConnectedTo]="[ideasList,todoList,researchList]"
+      [id]="'doneList'"
+      class="drop-list"
+      (cdkDropListDropped)="drop($event)"
+    >
+      <div class="container-box" *ngFor="let task of done "  cdkDrag>
+        {{task.content}}
+      </div>
+    </div>
+  </div>
+
+</div>
