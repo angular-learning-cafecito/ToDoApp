@@ -3,12 +3,7 @@
     {
       "id": 1,
       "content": "Some random idea",
-      "status": "IDEAS"
-    },
-    {
-      "id": 2,
-      "content": "This is another random idea",
-      "status": "TODO"
+      "status": "RESEARCH"
     },
     {
       "id": 3,
@@ -23,37 +18,37 @@
     {
       "id": 5,
       "content": "foo",
-      "status": "TODO"
+      "status": "RESEARCH"
     },
     {
       "id": 6,
       "content": "This was in the 'Research' column",
-      "status": "IDEAS"
+      "status": "TODO"
     },
     {
       "id": 7,
-      "content": "Get to work",
-      "status": "DONE"
+      "content": "Get to ...",
+      "status": "IDEAS"
     },
     {
       "id": 8,
       "content": "Pick up groceries",
-      "status": "RESEARCH"
+      "status": "TODO"
     },
     {
       "id": 9,
       "content": "Go home",
-      "status": "RESEARCH"
+      "status": "IDEAS"
     },
     {
       "id": 10,
       "content": "Fall asleep",
-      "status": "DONE"
+      "status": "TODO"
     },
     {
       "id": 11,
       "content": "Get up",
-      "status": "RESEARCH"
+      "status": "IDEAS"
     },
     {
       "id": 12,
@@ -63,12 +58,12 @@
     {
       "id": 13,
       "content": "Take a shower",
-      "status": "TODO"
+      "status": "RESEARCH"
     },
     {
       "id": 14,
       "content": "Check e-mail",
-      "status": "TODO"
+      "status": "DONE"
     },
     {
       "id": 15,
