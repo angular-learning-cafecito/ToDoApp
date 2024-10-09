@@ -2,7 +2,12 @@ import {Component, inject, OnInit} from '@angular/core';
 import {TasksService} from '../../services/tasks.service';
 import {Task, TaskStatus} from '../../models/task.entity';
 import {CdkDrag, CdkDragDrop, CdkDropList, moveItemInArray, transferArrayItem} from '@angular/cdk/drag-drop';
-import {NgForOf} from '@angular/common';
+import {NgForOf, NgIf} from '@angular/common';
+import {MatButton, MatMiniFabButton} from '@angular/material/button';
+import {MatIcon} from '@angular/material/icon';
+import {MatFormField} from '@angular/material/form-field';
+import {MatInput} from '@angular/material/input';
+import {FormsModule} from '@angular/forms';
 
 @Component({
   selector: 'app-drop-connected',
@@ -10,7 +15,14 @@ import {NgForOf} from '@angular/common';
   imports: [
     CdkDropList,
     NgForOf,
-    CdkDrag
+    CdkDrag,
+    MatButton,
+    MatIcon,
+    MatMiniFabButton,
+    NgIf,
+    MatFormField,
+    MatInput,
+    FormsModule
   ],
   templateUrl: './drop-connected.component.html',
   styleUrl: './drop-connected.component.css'
@@ -21,6 +33,9 @@ export class DropConnectedComponent implements OnInit{
   research:Task[]= [];
   todo:Task[]=[];
   done:Task[]= [];
+  editingTaskId:number | null = null;
+  originalTaskContent: string | null = null;
+
   taskService: TasksService = inject(TasksService);
   getTasks(){
     this.taskService.getAll().subscribe((response:any)=>{
@@ -42,7 +57,7 @@ export class DropConnectedComponent implements OnInit{
   ngOnInit(): void {
     this.getTasks();
   }
-  //TODO: the last task shows an error
+
   drop(event: CdkDragDrop<Task[]>) {
     console.log(event);
     // Si se mueve dentro de la misma lista
@@ -51,11 +66,6 @@ export class DropConnectedComponent implements OnInit{
     } else {
       // Guardar el elemento que se va a mover antes de transferirlo
       const movedTask = event.previousContainer.data[event.previousIndex];
-
-      console.log(`Se movió de ${event.previousContainer.data[0].status} a ${event.container.data[0].status} el elemento ${movedTask.content}`);
-      console.log("Moved Task Id:", movedTask.id);
-      console.log({ event });
-      console.log(event.previousContainer.data, event.container.data, event.previousIndex, event.currentIndex);
 
       // Transferir el elemento de una lista a otra
       transferArrayItem(
@@ -95,5 +105,34 @@ export class DropConnectedComponent implements OnInit{
         console.log(`Task ${movedTask.id} is Updated`, response);
       });
     }
+  }
+
+  editTask(taskId:number){
+    this.editingTaskId = taskId;
+    const task = this.tasks.find(item=> item.id === taskId);
+    if(task){
+      this.originalTaskContent = task.content;
+    }
+  }
+
+  isEditing(taskId:number){
+    return this.editingTaskId === taskId;
+  }
+  cancelEdit(){
+    if(this.editingTaskId!==null){
+      const task = this.tasks.find(item=>item.id===this.editingTaskId);
+      if(task && this.originalTaskContent!==null){
+        task.content = this.originalTaskContent;
+      }
+    }
+    this.editingTaskId = null;
+    this.originalTaskContent = null;
+  }
+  saveTask(task:Task){
+    this.editingTaskId = null;
+
+    this.taskService.update(task.id,task).subscribe((response:any)=>{
+      console.log(`task ${task.id} was updated: `,response);
+    })
   }
 }

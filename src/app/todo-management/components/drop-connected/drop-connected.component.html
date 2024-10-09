@@ -11,9 +11,25 @@
       (cdkDropListDropped)="drop($event)"
     >
       <div class="container-box" *ngFor="let task of ideas " cdkDrag>
-        {{task.content}}
+        <ng-container *ngIf="!isEditing(task.id)">
+          <p>{{task.content}}</p>
+        </ng-container>
+        <ng-container *ngIf="isEditing(task.id)">
+          <input matInput  placeholder="Editar tarea..." class="input-edit" [(ngModel)]="task.content">
+        </ng-container>
+
+        <div class="actions-buttons-task">
+          <button mat-mini-fab color="basic" (click)="editTask(task.id)" *ngIf="!isEditing(task.id)"><mat-icon>edit</mat-icon></button>
+          <button mat-mini-fab color="basic" *ngIf="isEditing(task.id)" (click)="saveTask(task)"><mat-icon>save</mat-icon></button>
+          <button mat-mini-fab color="basic" *ngIf="!isEditing(task.id)"><mat-icon>delete</mat-icon></button>
+          <button mat-mini-fab color="basic" *ngIf="isEditing(task.id)" (click)="cancelEdit()"><mat-icon>cancel</mat-icon></button>
+        </div>
       </div>
     </div>
+    <div class="container-actions">
+      <button mat-mini-fab><mat-icon>add</mat-icon></button>
+    </div>
+
   </div>
 
   <div class="container">
@@ -28,8 +44,15 @@
       (cdkDropListDropped)="drop($event)"
     >
       <div class="container-box" *ngFor="let task of research "  cdkDrag>
-        {{task.content}}
+        <p>{{task.content}}</p>
+        <div class="actions-buttons-task">
+          <button mat-mini-fab color="basic"><mat-icon>edit</mat-icon></button>
+          <button mat-mini-fab color="basic"><mat-icon>delete</mat-icon></button>
+        </div>
       </div>
+    </div>
+    <div class="container-actions">
+      <button mat-mini-fab><mat-icon>add</mat-icon></button>
     </div>
   </div>
 
@@ -45,8 +68,15 @@
       (cdkDropListDropped)="drop($event)"
     >
       <div class="container-box" *ngFor="let task of todo "  cdkDrag>
-        {{task.content}}
+        <p>{{task.content}}</p>
+        <div class="actions-buttons-task">
+          <button mat-mini-fab color="basic"><mat-icon>edit</mat-icon></button>
+          <button mat-mini-fab color="basic"><mat-icon>delete</mat-icon></button>
+        </div>
       </div>
+    </div>
+    <div class="container-actions">
+      <button mat-mini-fab><mat-icon>add</mat-icon></button>
     </div>
   </div>
 
@@ -62,8 +92,15 @@
       (cdkDropListDropped)="drop($event)"
     >
       <div class="container-box" *ngFor="let task of done "  cdkDrag>
-        {{task.content}}
+        <p>{{task.content}}</p>
+        <div class="actions-buttons-task">
+          <button mat-mini-fab color="basic"><mat-icon>edit</mat-icon></button>
+          <button mat-mini-fab color="basic"><mat-icon>delete</mat-icon></button>
+        </div>
       </div>
+    </div>
+    <div class="container-actions">
+      <button mat-mini-fab><mat-icon>add</mat-icon></button>
     </div>
   </div>
 
