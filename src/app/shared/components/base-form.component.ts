@@ -12,7 +12,7 @@ export class BaseFormComponent {
         return `The field ${controlName} is required`;
       // Add more cases here
       default:
-        return `The field ${controlName} is invalid`;
+        return `The field ${controlName} is not invalid`;
     }
   }
 
